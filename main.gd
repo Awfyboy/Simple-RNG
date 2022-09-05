@@ -12,7 +12,7 @@ onready var input := $VBoxContainer/Input
 # that 'is_valid_integer()' function returns a boolean value to check if the input-
 # number is an integer. If it isn't, the title simply states max_num as unknown.
 func _process(delta):
-	if input.text.is_valid_integer() == true:
+	if input.text.is_valid_integer():
 		max_num = int(input.text)
 		title.text = "Find a number between 0 and " + str(max_num)
 	else:
@@ -23,7 +23,7 @@ func _process(delta):
 # number is an integer and notifies if it isn't.
 func _on_Button_pressed():
 	num = randi() % max_num + 1
-	if input.text.is_valid_integer() == true:
+	if input.text.is_valid_integer():
 		number.text = str(num)
 		if num % 2 == 0:
 			result.text = "The number " + str(num) + " is even"
