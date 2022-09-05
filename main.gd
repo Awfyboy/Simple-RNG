@@ -1,6 +1,5 @@
 extends Control
 
-var num: int
 var max_num: int = 20
 
 onready var title := $VBoxContainer/Title
@@ -22,8 +21,8 @@ func _process(delta):
 # indicate whether the number is odd or even. Again, this checks whether the input-
 # number is an integer and notifies if it isn't.
 func _on_Button_pressed():
-	num = randi() % max_num + 1
 	if input.text.is_valid_integer():
+		var num = randi() % max_num + 1
 		number.text = str(num)
 		if num % 2 == 0:
 			result.text = "The number " + str(num) + " is even"
