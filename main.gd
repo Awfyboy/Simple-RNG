@@ -23,14 +23,12 @@ func _process(delta):
 # number is an integer and notifies if it isn't.
 func _on_Button_pressed():
 	num = randi() % max_num + 1
-
 	if input.text.is_valid_integer() == true:
 		number.text = str(num)
 		if num % 2 == 0:
 			result.text = "The number " + str(num) + " is even"
 		else:
 			result.text = "The number " + str(num) + " is odd"
-
 	else:
 		number.text = "???"
 		result.text = "Maximum number not recognized! Please input an appropriate integer value."
