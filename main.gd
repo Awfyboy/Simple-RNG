@@ -13,7 +13,7 @@ onready var input := $VBoxContainer/Input
 func _process(delta):
 	if input.text.is_valid_integer():
 		max_num = int(input.text)
-		title.text = "Find a number between 0 and " + str(max_num)
+		title.text = "Find a number between 0 and %d" % max_num
 	else:
 		title.text = "Find a number between 0 and ???"
 
@@ -25,9 +25,9 @@ func _on_Button_pressed():
 		var num = randi() % max_num + 1
 		number.text = str(num)
 		if num % 2 == 0:
-			result.text = "The number " + str(num) + " is even"
+			result.text = "The number %d is even" % num
 		else:
-			result.text = "The number " + str(num) + " is odd"
+			result.text = "The number %d is odd" % num
 	else:
 		number.text = "???"
 		result.text = "Maximum number not recognized! Please input an appropriate integer value."
