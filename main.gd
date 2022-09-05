@@ -1,0 +1,36 @@
+extends Control
+
+var num: int
+var max_num: int = 20
+
+onready var title := $VBoxContainer/Title
+onready var number := $VBoxContainer/Number
+onready var result := $VBoxContainer/Result
+onready var input := $VBoxContainer/Input
+
+# We change the title to the input maximum number value in the input field. Note-
+# that 'is_valid_integer()' function returns a boolean value to check if the input-
+# number is an integer. If it isn't, the title simply states max_num as unknown.
+func _process(delta):
+	if input.text.is_valid_integer() == true:
+		max_num = int(input.text)
+		title.text = "Find a number between 0 and " + str(max_num)
+	else:
+		title.text = "Find a number between 0 and ???"
+
+# This function generates a number between 0 and max_num and updates 'Result' to- 
+# indicate whether the number is odd or even. Again, this checks whether the input-
+# number is an integer and notifies if it isn't.
+func _on_Button_pressed():
+	num = randi() % max_num + 1
+	
+	if input.text.is_valid_integer() == true:
+		number.text = str(num)
+		if num % 2 == 0:
+			result.text = "The number " + str(num) + " is even"
+		else:
+			result.text = "The number " + str(num) + " is odd"
+	
+	else:
+		number.text = "???"
+		result.text = "Maximum number not recognized! Please input an appropriate integer value."
