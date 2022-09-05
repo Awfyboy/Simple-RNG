@@ -16,6 +16,7 @@ config/icon="res://icon.png"
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true
+theme/custom="res://main_theme.theme"
 
 [physics]
 
