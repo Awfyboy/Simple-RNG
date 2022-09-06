@@ -1,6 +1,6 @@
 extends Control
 
-var max_num: int = 20
+var max_num: int
 
 onready var title := $VBoxContainer/Title
 onready var number := $VBoxContainer/Number
@@ -11,8 +11,8 @@ onready var input := $VBoxContainer/Input
 # that 'is_valid_integer()' function returns a boolean value to check if the input-
 # number is an integer. If it isn't, the title simply states max_num as unknown.
 func _process(delta):
-	if input.text.is_valid_integer():
-		max_num = int(input.text)
+	max_num = int(input.text)
+	if input.text.is_valid_integer() && max_num >= 0:
 		title.text = "Find a number between 0 and %d" % max_num
 	else:
 		title.text = "Find a number between 0 and ???"
@@ -21,8 +21,8 @@ func _process(delta):
 # indicate whether the number is odd or even. Again, this checks whether the input-
 # number is an integer and notifies if it isn't.
 func _on_Button_pressed():
-	if input.text.is_valid_integer():
-		var num = randi() % max_num + 1
+	if input.text.is_valid_integer() && max_num >= 0:
+		var num = randi() % (max_num + 1)
 		number.text = str(num)
 		if num % 2 == 0:
 			result.text = "The number %d is even" % num
@@ -30,4 +30,4 @@ func _on_Button_pressed():
 			result.text = "The number %d is odd" % num
 	else:
 		number.text = "???"
-		result.text = "Maximum number not recognized! Please input an appropriate integer value."
+		result.text = "Maximum number not recognized! Please input a positive integer value."
