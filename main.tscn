@@ -1,14 +1,6 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=2 format=2]
 
 [ext_resource path="res://main.gd" type="Script" id=1]
-
-[sub_resource type="DynamicFontData" id=1]
-font_path = "res://LeagueSpartan-Bold.otf"
-
-[sub_resource type="DynamicFont" id=2]
-size = 24
-extra_spacing_char = 1
-font_data = SubResource( 1 )
 
 [node name="Main" type="Control"]
 anchor_right = 1.0
@@ -53,7 +45,7 @@ text = "Click to generate number"
 margin_top = 242.0
 margin_right = 728.0
 margin_bottom = 273.0
-custom_fonts/font = SubResource( 2 )
+theme_type_variation = "fancy_label"
 align = 1
 valign = 1
 uppercase = true
